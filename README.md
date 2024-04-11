@@ -1,4 +1,5 @@
-# Tax_Calculator
+# Tax_Calculator description with Test cases
+
 The tax calculator HTML code allows users to input income details and calculates tax amounts based on provided information, utilizing Bootstrap, jQuery, and Font Awesome for styling and functionality.
 The tax calculator HTML code creates a user interface for calculating taxes based on income, extra income, deductions, and age group. Users input their financial information, and the script calculates the tax amount accordingly. It employs Bootstrap for styling, jQuery for form handling, and Font Awesome for icons. The form includes tooltips for guidance and a modal for displaying the calculated tax amount.
 
@@ -24,7 +25,7 @@ Test Cases :-
 
 ![Screenshot (12)](https://github.com/Darshan-1907/Tax_Calculator/assets/110981147/a6fadefa-28d9-4274-ad50-b8b6c1134115)
 ![Screenshot (15)](https://github.com/Darshan-1907/Tax_Calculator/assets/110981147/3cfdd56a-3a76-4e05-94a3-abcfc551771c)
-![Screenshot (14)](https://github.com/Darshan-1907/Tax_Calculator/assets/110981147/f2ff0ec2-c9af-4e5c-a463-083181252410)
+![Screenshot (17)](https://github.com/Darshan-1907/Tax_Calculator/assets/110981147/9ab515f4-a1f2-4628-a036-50afcbe9107a)
 ![Screenshot (16)](https://github.com/Darshan-1907/Tax_Calculator/assets/110981147/ebfa943e-17d8-47f6-a44f-aef91cd5b2a7)
 
 
