@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css.css">
+    <style>
+        
+        body{
+            background-color: lightskyblue;
+            }
+        h1{
+            color: hsl(180, 9%, 2%);
+        }
+        label{
+            color: #000000;
+        }
+       
+        .container{
+            width: 50%;
+            height: 50%;
+            border:solid;
+            margin-top: 3%;
+            padding:20px 55px 25px 55px;
+        }
+        .modal-body{
+
+            position: relative;
+            text-align: center;
+            float: center;
+
+        }
+        .btn{
+            background-color: rgb(82, 51, 170);
+        }
+   
+
+         .error-icon {
+            display: none;
+            background-color:#ffff;
+            cursor: pointer;
+            align-items: center;
+            position: relative;
+            width: 45px;
+            height: 37.5px;
+          }
+        .error-icon:before {
+          content: "!";
+          width: 20px;
+          height: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius:50%;
+          border:solid gray;
+          background-color:hsl(0, 0%, 100%);
+          color: gray;
+          cursor: pointer;
+         }
+
+        .error-tooltip {
+        position: relative;
+        display: inline-block;
+        }   
+
+        .error-tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 12px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+        .error-tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+        .error-tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+    </style>
+</head>
+<body>
+    <div class="maincontainer">
+    <div style="width:40%"class="container">
+        <h1 class="text-center mb-4"style="font-size: 25px;">FYLE<br> Tax Calculator</h1>
+        <form id="taxForm">
+            <div class="form-group">
+                <label for="income">Enter Gross Annual Income <i class="fa fa-question-circle" aria-hidden="true" style="cursor: pointer;"title="Salary before any deduction"></i>
+                </label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="income" placeholder="Enter your income">
+                    <div class="input-group-append">
+                        <span class="input-group-text error-icon" id="income-error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="extraIncome">Enter Extra Income  <i class="fa fa-question-circle" aria-hidden="true" style="cursor: pointer;"title="Extra incojme rather than annual income"></i></label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="extraIncome" placeholder="Enter extra income">
+                    <div class="input-group-append">
+                        <span class="input-group-text error-icon" id="extraIncome-error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="deductions">Enter total applicable deductions  <i class="fa fa-question-circle" aria-hidden="true" style="cursor: pointer;"title="deduction expences"></i></label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="deductions" placeholder="Enter deductions">
+                    <div class="input-group-append">
+                        <span class="input-group-text error-icon" id="deductions-error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="age">Enter age group:</label>
+                <select class="form-control" id="age">
+                    <option value="<40">&lt; 40</option>
+                    <option value="≥40 &lt;60">&ge; 40 &lt; 60</option>
+                    <option value="≥60">&ge; 60</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Calculate Tax</button>
+        </form>
+    </div>
+</div>
+
+    <div style="padding-top: 10%;"class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div  class="modal-dialog" role="document">
+            <div class="modal-content" style="padding-top: 10%;">
+                <center><h5>Your overall income will be </h5></center>
+                <div class="modal-body" id="resultContent"></div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="index.js"></script>
+    <script>
+        $(document).ready(function() {
+    $('#taxForm').submit(function(event) {
+        event.preventDefault();
+        calculateTax();
+    });
+
+    $('.error-icon').each(function() {
+        $(this).parent().addClass('error-tooltip');
+        $(this).parent().append('<span class="tooltiptext">This field is required<br><small>(only numbers are allowed)</small></span>');
+    });
+});
+
+function calculateTax() {
+    var income = parseFloat($('#income').val());
+    var extraIncome = parseFloat($('#extraIncome').val());
+    var deductions = parseFloat($('#deductions').val());
+    var age = $('#age').val();
+
+    var isValid = true;
+    if (isNaN(income)) {
+        $('#income-error').css('display', 'inline-block');
+        isValid = false;
+    } else {
+        $('#income-error').css('display', 'inline-block');
+    }
+    if (isNaN(extraIncome)) {
+        $('#extraIncome-error').css('display', 'inline-block');
+        isValid = false;
+    } else {
+        $('#extraIncome-error').css('display', 'inline-block');
+    }
+    if (isNaN(deductions)) {
+        $('#deductions-error').css('display', 'inline-block');
+        isValid = false;
+    } else {
+        $('#deductions-error').css('display', 'inline-block');
+    }
+    if (age === '') {
+        $('#age-error').css('display', 'inline-block');
+        isValid = false;
+    } else {
+        $('#age-error').css('display', 'inline-block');
+    }
+
+    if (!isValid) {
+        return;
+    }
+
+
+    var taxableIncome = income + extraIncome - deductions;
+    var tax = 0;
+
+
+    if (taxableIncome > 800000) {
+        if (age === '<40') {
+            tax = (taxableIncome - 800000) * 0.3;
+        } else if (age === '≥40 &lt;60') {
+            tax = (taxableIncome - 800000) * 0.4;
+        } else if (age === '≥60') {
+            tax = (taxableIncome - 800000) * 0.1;
+        }
+    }
+
+    var taxAmount = tax.toFixed(2);
+    $('#resultContent').html('<p>Tax Amount: ' + taxAmount +'<br><small>after tax deduction<small> </p>');
+    $('#resultModal').modal('show');
+}
+
+    </script>
+</body>
+</html>

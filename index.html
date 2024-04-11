@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <div class="maincontainer">
+    <div style="width:40%"class="container">
+        <h1 class="text-center mb-4"style="font-size: 25px;">FYLE<br> Tax Calculator</h1>
+        <form id="taxForm">
+            <div class="form-group">
+                <label for="income">Enter Gross Annual Income <i class="fa fa-question-circle" aria-hidden="true" style="cursor: pointer;"title="Salary before any deduction"></i>
+                </label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="income" placeholder="Enter your income">
+                    <div class="input-group-append">
+                        <span class="input-group-text error-icon" id="income-error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="extraIncome">Enter Extra Income  <i class="fa fa-question-circle" aria-hidden="true" style="cursor: pointer;"title="Extra incojme rather than annual income"></i></label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="extraIncome" placeholder="Enter extra income">
+                    <div class="input-group-append">
+                        <span class="input-group-text error-icon" id="extraIncome-error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="deductions">Enter total applicable deductions  <i class="fa fa-question-circle" aria-hidden="true" style="cursor: pointer;"title="deduction expences"></i></label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="deductions" placeholder="Enter deductions">
+                    <div class="input-group-append">
+                        <span class="input-group-text error-icon" id="deductions-error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="age">Enter age group:</label>
+                <select class="form-control" id="age">
+                    <option value="<40">&lt; 40</option>
+                    <option value="≥40 &lt;60">&ge; 40 &lt; 60</option>
+                    <option value="≥60">&ge; 60</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Calculate Tax</button>
+        </form>
+    </div>
+</div>
+
+    <div style="padding-top: 10%;"class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div  class="modal-dialog" role="document">
+            <div class="modal-content" style="padding-top: 10%;">
+                <center><h5>Your overall income will be </h5></center>
+                <div class="modal-body" id="resultContent"></div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="index.js"></script>
+</body>
+</html>
