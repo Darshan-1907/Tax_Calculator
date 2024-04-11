@@ -17,4 +17,16 @@ here's a description of each field in the tax calculator form:
 
 After entering all the necessary information, users can click the "Calculate Tax" button to compute the estimated tax amount based on the provided data. The result will be displayed in a modal window.
 
-Feel free to use the calculator by opening the `index.html` file in a web browser and following the instructions provided!
+Feel free to use the calculator by opening the `index.html` file in a web browser and following the instructions provided! 
+
+
+Test Cases :-
+
+![Screenshot (12)](https://github.com/Darshan-1907/Tax_Calculator/assets/110981147/a6fadefa-28d9-4274-ad50-b8b6c1134115)
+![Screenshot (15)](https://github.com/Darshan-1907/Tax_Calculator/assets/110981147/3cfdd56a-3a76-4e05-94a3-abcfc551771c)
+![Screenshot (14)](https://github.com/Darshan-1907/Tax_Calculator/assets/110981147/f2ff0ec2-c9af-4e5c-a463-083181252410)
+![Screenshot (16)](https://github.com/Darshan-1907/Tax_Calculator/assets/110981147/ebfa943e-17d8-47f6-a44f-aef91cd5b2a7)
+
+
+
+
